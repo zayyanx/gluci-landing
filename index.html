@@ -50,38 +50,119 @@
             <img src="images/fries.png" alt="Photo of fries" loading="eager">
           </div>
 
-          <!-- Gluci response: Chart -->
+          <!-- Scenario 1: Baseline -->
           <div class="bubble bubble-received chart-bubble">
             <div class="chart-card-inner">
-              <div class="chart-label">Predicted Glucose Response</div>
-              <svg viewBox="0 0 260 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Background Taupe -->
-                <rect width="260" height="110" fill="#FAFAFA"/>
-                <!-- Green zone -->
-                <rect x="0" y="60" width="260" height="50" rx="0" fill="#E8F2DC"/>
-                <!-- Red zone -->
-                <rect x="0" y="0" width="260" height="60" rx="0" fill="#FCE4E4"/>
-                <!-- Grid lines -->
-                <line x1="0" y1="60" x2="260" y2="60" stroke="#ccc" stroke-width="0.5" stroke-dasharray="3,3"/>
-                <line x1="0" y1="30" x2="260" y2="30" stroke="#ecc" stroke-width="0.5" stroke-dasharray="3,3"/>
-                <!-- Glucose curve — big spike -->
-                <path d="M10 90 C30 88, 50 80, 70 55 C85 35, 95 18, 110 15 C125 12, 140 20, 155 40 C170 58, 185 72, 210 80 C230 85, 245 87, 255 88" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                <!-- Spike dot -->
-                <circle cx="110" cy="15" r="5" fill="#E07A8A"/>
-                <!-- Spike label -->
-                <rect x="118" y="6" width="58" height="18" rx="9" fill="#FCE4E4"/>
-                <text x="147" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#A33333">+52 mg/dL</text>
-                <!-- Time labels -->
-                <text x="10" y="107" font-family="Inter, sans-serif" font-size="8" fill="#8A8A8A">0 min</text>
-                <text x="120" y="107" font-family="Inter, sans-serif" font-size="8" fill="#8A8A8A">60 min</text>
-                <text x="235" y="107" font-family="Inter, sans-serif" font-size="8" fill="#8A8A8A">120 min</text>
+              <div class="chart-tile-overlay">
+                <img src="images/fries.png" alt="Fries">
+              </div>
+              <svg viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="50" y="10" width="240" height="50" fill="#FCE4E4"/>
+                <rect x="50" y="60" width="240" height="50" fill="#E8F2DC"/>
+                <rect x="50" y="10" width="240" height="100" fill="none" stroke="#1A1A1A" stroke-width="1"/>
+                
+                <text x="45" y="13" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">+60</text>
+                <text x="45" y="45" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">spike</text>
+                <text x="45" y="63" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">+30</text>
+                <text x="45" y="113" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">baseline</text>
+                
+                <line x1="47" y1="10" x2="50" y2="10" stroke="#1A1A1A" stroke-width="1"/>
+                <line x1="47" y1="60" x2="50" y2="60" stroke="#1A1A1A" stroke-width="1"/>
+                <line x1="47" y1="110" x2="50" y2="110" stroke="#1A1A1A" stroke-width="1"/>
+
+                <text x="110" y="128" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">eating time</text>
+                <text x="230" y="128" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">+ 2 hours</text>
+
+                <path d="M 110 105 C 130 105, 150 20, 170 20 C 190 20, 210 60, 230 60 L 230 105 Z" fill="#1A1A1A"/>
+                <path d="M 50 85 Q 80 105, 110 105 C 130 105, 150 20, 170 20 C 190 20, 210 60, 230 60 C 250 60, 270 85, 290 85" stroke="#1A1A1A" stroke-width="2" fill="none"/>
+                
+                <g class="callout">
+                  <rect x="65" y="15" width="80" height="22" rx="4" fill="white" stroke="#1A1A1A" stroke-width="1"/>
+                  <text x="105" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">Fries alone</text>
+                  <line x1="105" y1="37" x2="105" y2="98" stroke="#1A1A1A" stroke-width="1.5"/>
+                  <polygon points="102,93 108,93 105,98" fill="#1A1A1A"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Scenario 2: Vinegar -->
+          <div class="bubble bubble-received chart-bubble">
+            <div class="chart-card-inner">
+              <div class="chart-tile-overlay">
+                <img src="images/vinegar.png" alt="Vinegar">
+              </div>
+              <svg viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="50" y="10" width="240" height="50" fill="#FCE4E4"/>
+                <rect x="50" y="60" width="240" height="50" fill="#E8F2DC"/>
+                <rect x="50" y="10" width="240" height="100" fill="none" stroke="#1A1A1A" stroke-width="1"/>
+                
+                <text x="45" y="13" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">+60</text>
+                <text x="45" y="45" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">spike</text>
+                <text x="45" y="63" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">+30</text>
+                <text x="45" y="113" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">baseline</text>
+                
+                <line x1="47" y1="10" x2="50" y2="10" stroke="#1A1A1A" stroke-width="1"/>
+                <line x1="47" y1="60" x2="50" y2="60" stroke="#1A1A1A" stroke-width="1"/>
+                <line x1="47" y1="110" x2="50" y2="110" stroke="#1A1A1A" stroke-width="1"/>
+
+                <text x="110" y="128" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">eating time</text>
+                <text x="230" y="128" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">+ 2 hours</text>
+
+                <path d="M 110 105 C 130 105, 150 45, 170 45 C 190 45, 210 70, 230 70 L 230 105 Z" fill="#1A1A1A"/>
+                <path d="M 50 85 Q 80 105, 110 105 C 130 105, 150 45, 170 45 C 190 45, 210 70, 230 70 C 250 70, 270 85, 290 85" stroke="#1A1A1A" stroke-width="2" fill="none"/>
+                
+                <g class="callout">
+                  <rect x="50" y="15" width="120" height="34" rx="4" fill="white" stroke="#1A1A1A" stroke-width="1"/>
+                  <text x="110" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">1 tbsp vinegar in</text>
+                  <text x="110" y="43" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">water then fries</text>
+                  <line x1="110" y1="49" x2="110" y2="98" stroke="#1A1A1A" stroke-width="1.5"/>
+                  <polygon points="107,93 113,93 110,98" fill="#1A1A1A"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Scenario 3: Walk -->
+          <div class="bubble bubble-received chart-bubble">
+            <div class="chart-card-inner">
+              <div class="chart-tile-overlay">
+                <img src="images/walk.png" alt="Walk">
+              </div>
+              <svg viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="50" y="10" width="240" height="50" fill="#FCE4E4"/>
+                <rect x="50" y="60" width="240" height="50" fill="#E8F2DC"/>
+                <rect x="50" y="10" width="240" height="100" fill="none" stroke="#1A1A1A" stroke-width="1"/>
+                
+                <text x="45" y="13" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">+60</text>
+                <text x="45" y="45" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">spike</text>
+                <text x="45" y="63" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">+30</text>
+                <text x="45" y="113" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">baseline</text>
+                
+                <line x1="47" y1="10" x2="50" y2="10" stroke="#1A1A1A" stroke-width="1"/>
+                <line x1="47" y1="60" x2="50" y2="60" stroke="#1A1A1A" stroke-width="1"/>
+                <line x1="47" y1="110" x2="50" y2="110" stroke="#1A1A1A" stroke-width="1"/>
+
+                <text x="110" y="128" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">eating time</text>
+                <text x="230" y="128" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#8A8A8A">+ 2 hours</text>
+
+                <path d="M 110 105 C 130 105, 150 55, 170 55 C 190 55, 210 75, 230 75 L 230 105 Z" fill="#1A1A1A"/>
+                <path d="M 50 85 Q 80 105, 110 105 C 130 105, 150 55, 170 55 C 190 55, 210 75, 230 75 C 250 75, 270 85, 290 85" stroke="#1A1A1A" stroke-width="2" fill="none"/>
+                
+                <g class="callout">
+                  <rect x="60" y="15" width="100" height="34" rx="4" fill="white" stroke="#1A1A1A" stroke-width="1"/>
+                  <text x="110" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">Fries then a</text>
+                  <text x="110" y="43" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">10 min walk</text>
+                  <line x1="110" y1="49" x2="110" y2="98" stroke="#1A1A1A" stroke-width="1.5"/>
+                  <polygon points="107,93 113,93 110,98" fill="#1A1A1A"/>
+                </g>
               </svg>
             </div>
           </div>
 
           <!-- Gluci response: Text -->
           <div class="bubble bubble-received">
-            <span class="bubble-text">Big spike incoming — about <strong>+52 mg/dL</strong>. A 10-min walk after will flatten it by ~40%.</span>
+            <span class="bubble-text">Big spike incoming (+52 mg/dL). You can flatten it by ~45% with a 10-min walk, or ~35% with 1tbsp vinegar (on your fries or in water).</span>
           </div>
         </div>
       </div>

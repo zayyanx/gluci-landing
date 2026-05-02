@@ -323,6 +323,26 @@ h3 {
   border-radius: 0;
   padding: 16px 14px;
   overflow: hidden;
+  position: relative;
+}
+
+.chart-tile-overlay {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  border: 2px solid #fff;
+  z-index: 10;
+}
+
+.chart-tile-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .chart-card-inner .chart-label {
