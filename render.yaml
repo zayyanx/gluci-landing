@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: gluci-landing
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: RESEND_API_KEY
+        sync: false
+      - key: RESEND_FROM
+        sync: false
+      - key: RESEND_AUDIENCE_ID
+        sync: false
+      - key: NOTIFY_EMAIL
+        sync: false
