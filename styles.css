@@ -609,14 +609,15 @@ h3 {
   margin-bottom: 36px;
 }
 
-.final-cta .cta-grid {
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 520px;
-  margin: 0 auto;
+.final-cta-action {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
 }
 
 .final-cta .microcopy {
   margin-top: 20px;
+  text-align: center;
 }
 
 /* =============================
@@ -817,9 +818,8 @@ h3 {
     font-size: 28px;
   }
 
-  .final-cta .cta-grid {
-    grid-template-columns: 1fr 1fr;
-    max-width: 320px;
+  .final-cta-action {
+    justify-content: center;
   }
 
   /* Footer */
