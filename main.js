@@ -112,39 +112,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- iMessage button: device-gating ---
-  const isApple = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent);
-  const imessageButtons = document.querySelectorAll('[id^="btn-imessage"]');
-
-  imessageButtons.forEach(btn => {
-    if (isApple) {
-      btn.href = 'sms:&body=Hi%20Gluci';
-    } else {
-      btn.style.opacity = '0.5';
-      btn.style.cursor = 'default';
-      btn.title = 'iMessage opens on Apple devices';
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openSheet();
-      });
-    }
-  });
-
-  // --- Telegram deeplink with fallback ---
-  const telegramButtons = document.querySelectorAll('[id^="btn-telegram"]');
-  telegramButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      // Try native app first
-      const start = Date.now();
-      window.location.href = 'tg://resolve?domain=gluci_bot';
-      setTimeout(() => {
-        // If still on page after 250ms, app probably not installed — fallback to web
-        if (Date.now() - start < 400) {
-          window.location.href = 'https://t.me/gluci_bot';
-        }
-      }, 250);
-    });
-  });
-
 });
