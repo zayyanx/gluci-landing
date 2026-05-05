@@ -95,6 +95,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // --- Waitlist form submissions ---
+  async function submitWaitlist(form, successEl) {
+    const email = form.querySelector('.email-input').value;
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Joining...';
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        form.hidden = true;
+        successEl.hidden = false;
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Join Waitlist';
+        alert('Something went wrong. Please try again.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Join Waitlist';
+      alert('Something went wrong. Please try again.');
+    }
+  }
+
+  const formFinal = document.getElementById('form-final');
+  const successFinal = document.getElementById('success-final');
+  if (formFinal) formFinal.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitWaitlist(formFinal, successFinal);
+  });
+
+  const formSheet = document.getElementById('form-sheet');
+  const successSheet = document.getElementById('success-sheet');
+  if (formSheet) formSheet.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitWaitlist(formSheet, successSheet);
+  });
+
   // --- Creator wall: ?ref= reordering ---
   const params = new URLSearchParams(window.location.search);
   const refCreator = params.get('ref');

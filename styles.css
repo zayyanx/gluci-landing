@@ -620,6 +620,60 @@ h3 {
   text-align: center;
 }
 
+/* --- Waitlist Form --- */
+.waitlist-form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.email-input {
+  flex: 1;
+  min-width: 220px;
+  max-width: 300px;
+  padding: 14px 20px;
+  border-radius: 100px;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  background: var(--surface);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.email-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.email-input:focus {
+  border-color: var(--text-primary);
+}
+
+.form-success {
+  font-size: 14px;
+  color: var(--chart-green-text);
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.bottom-sheet .waitlist-form {
+  flex-direction: column;
+}
+
+.bottom-sheet .email-input {
+  max-width: 100%;
+  width: 100%;
+}
+
+.bottom-sheet .btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+}
+
 /* =============================
    FOOTER
    ============================= */
