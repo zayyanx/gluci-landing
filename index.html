@@ -5,8 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gluci — See the Spike Before You Eat It</title>
   <meta name="description" content="Gluci helps you see the spike before you eat it. Join the waitlist for early access.">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>📊</text></svg>">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R05LM0ZHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8R05LM0ZHG');
+  </script>
 </head>
 <body>
 
@@ -18,7 +28,7 @@
         <h1>See the spike <span class="italic-accent">before</span> you eat it.</h1>
         <p class="subhead">Snap a photo of any meal. Gluci predicts your glucose curve in seconds — no monitor, no bloodwork.</p>
         <div class="cta-grid" id="hero-cta-grid">
-          <a href="#final-cta" class="btn btn-primary" id="btn-waitlist-hero">Join Waitlist</a>
+          <a href="#final-cta" class="btn btn-primary" id="btn-waitlist-hero" data-analytics-event="waitlist_cta_click" data-analytics-location="hero">Join Waitlist</a>
         </div>
         <p class="microcopy">Free to join. Be first when Gluci opens.</p>
       </div>
@@ -294,7 +304,7 @@
         </div>
       </div>
       <div class="creator-cta animate-on-scroll">
-        <a href="#final-cta">Join Waitlist →</a>
+        <a href="#final-cta" data-analytics-event="waitlist_cta_click" data-analytics-location="creator_wall">Join Waitlist →</a>
       </div>
     </div>
   </section>
@@ -304,7 +314,7 @@
     <div class="container">
       <h2 class="animate-on-scroll">Get early access to Gluci.</h2>
       <p class="section-sub animate-on-scroll">Be first in line. We'll let you know the moment it's ready.</p>
-      <form class="waitlist-form animate-on-scroll" id="form-final">
+      <form class="waitlist-form animate-on-scroll" id="form-final" data-analytics-location="final_cta">
         <input type="email" class="email-input" placeholder="your@email.com" required />
         <button type="submit" class="btn btn-primary">Join Waitlist</button>
       </form>
@@ -331,7 +341,7 @@
       <div class="line1">Get early access</div>
       <div class="line2">Join the waitlist</div>
     </div>
-    <button class="btn btn-cta-sticky" id="sticky-scan-btn">Join Waitlist ↑</button>
+    <button class="btn btn-cta-sticky" id="sticky-scan-btn" data-analytics-event="waitlist_cta_click" data-analytics-location="sticky_cta">Join Waitlist ↑</button>
   </div>
 
   <!-- Bottom Sheet -->
@@ -340,13 +350,14 @@
     <div class="bottom-sheet-handle"></div>
     <h3>Get early access</h3>
     <p class="section-sub" style="text-align:center;margin-bottom:20px;">Free to join. Be first when Gluci opens.</p>
-    <form class="waitlist-form" id="form-sheet">
+    <form class="waitlist-form" id="form-sheet" data-analytics-location="bottom_sheet">
       <input type="email" class="email-input" placeholder="your@email.com" required />
       <button type="submit" class="btn btn-primary">Join Waitlist</button>
     </form>
     <p class="form-success" id="success-sheet" hidden>You're on the list. We'll be in touch.</p>
   </div>
 
-  <script src="main.js"></script>
+  <script src="analytics.js" defer></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

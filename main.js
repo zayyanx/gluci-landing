@@ -2,6 +2,20 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  function trackEvent(eventName, eventParams = {}) {
+    if (typeof window.gluciTrack === 'function') {
+      window.gluciTrack(eventName, eventParams);
+    }
+  }
+
+  document.querySelectorAll('[data-analytics-event]').forEach((target) => {
+    target.addEventListener('click', () => {
+      trackEvent(target.dataset.analyticsEvent, {
+        location: target.dataset.analyticsLocation || 'unknown',
+      });
+    });
+  });
+
   // --- Scroll animations (IntersectionObserver) ---
   const animatedEls = document.querySelectorAll('.animate-on-scroll');
   const scrollObserver = new IntersectionObserver((entries) => {
@@ -60,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('bottom-sheet-overlay');
 
   function openSheet() {
+    trackEvent('waitlist_sheet_open', { location: 'sticky_cta' });
     overlay.style.display = 'block';
     sheet.style.display = 'block';
     // Force reflow for transition
@@ -71,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function closeSheet() {
+  function closeSheet(reason = 'unknown') {
+    trackEvent('waitlist_sheet_close', { reason });
     overlay.classList.remove('open');
     sheet.classList.remove('open');
     setTimeout(() => {
@@ -80,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (scanBtn) scanBtn.addEventListener('click', openSheet);
-  if (overlay) overlay.addEventListener('click', closeSheet);
+  if (overlay) overlay.addEventListener('click', () => closeSheet('overlay'));
 
   // Swipe-down to close the sheet
   let touchStartY = 0;
@@ -91,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sheet.addEventListener('touchmove', (e) => {
       const deltaY = e.touches[0].clientY - touchStartY;
-      if (deltaY > 60) closeSheet();
+      if (deltaY > 60) closeSheet('swipe');
     }, { passive: true });
   }
 
@@ -99,8 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
   async function submitWaitlist(form, successEl) {
     const email = form.querySelector('.email-input').value;
     const btn = form.querySelector('button[type="submit"]');
+    const analyticsLocation = form.dataset.analyticsLocation || form.id || 'unknown';
     btn.disabled = true;
     btn.textContent = 'Joining...';
+    trackEvent('waitlist_submit_attempt', { location: analyticsLocation });
 
     try {
       const res = await fetch('/api/subscribe', {
@@ -112,14 +130,26 @@ document.addEventListener('DOMContentLoaded', () => {
       if (res.ok) {
         form.hidden = true;
         successEl.hidden = false;
+        trackEvent('generate_lead', {
+          location: analyticsLocation,
+          method: 'waitlist_form',
+        });
       } else {
         btn.disabled = false;
         btn.textContent = 'Join Waitlist';
+        trackEvent('waitlist_submit_error', {
+          location: analyticsLocation,
+          status: res.status,
+        });
         alert('Something went wrong. Please try again.');
       }
     } catch {
       btn.disabled = false;
       btn.textContent = 'Join Waitlist';
+      trackEvent('waitlist_submit_error', {
+        location: analyticsLocation,
+        status: 'network_error',
+      });
       alert('Something went wrong. Please try again.');
     }
   }
@@ -151,6 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       if (match) {
         grid.prepend(match);
+        trackEvent('creator_referral_view', {
+          creator_ref: refCreator.toLowerCase(),
+        });
       }
     }
   }
